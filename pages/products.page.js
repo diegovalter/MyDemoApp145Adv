@@ -2,7 +2,7 @@ const BasePage = require('./base.page')
 
 class ProductsPage extends BasePage {
 
-    get logo() { // seletor do logo MyDemoApp
+    get logo() { 
         return $('~App logo and name')
     }
 

@@ -1,15 +1,19 @@
 Feature: Fluxo de Compra
 
-    Scenario Outline: Comprar um produto com sucesso
+    Scenario: Comprar dois produto com sucesso
         Given que estou na tela de Produtos
-        When na "<rolagem>" seleciono o produto na posicao "<index>"
-        Then verifico o "<produto>" e o "<preco>"
-        When adiciono o produto no carrinho
-        Then exibe o numero 1 no icone do carrinho
-        When clico no carrinho
-        Then verifico o "<produto>" e o "<preco>" no carrinho
+        When seleciono o "<produto1>" na posicao "<index1>"
+        And adiciono o produto no carrinho
+        And retorno para a pagina de Produtos
+        And na segunda pagina seleciono o "<produto2>" na posicao "<index2>"
+        And adiciono o segundo produto no carrinho
+        Then o icone do carrinho exibe o numero 2
+        And clico no carrinho
+        And vejo o "<produto1>" e o "<produto2>" no carrinho
+        And vejo o "<preco1>" e o "<preco2>" corretamente
+        And vejo o valor "<total>"
 
         Examples:
-        | produto                       | preco   | rolagem | index |
-        | Sauce Labs Backpack           | $ 29.99 | 0       | 0     |
-        | Sauce Labs Backpack (yellow)  | $ 29.99 | 1       | 1     |
+        | produto1              | preco1    | index1 | produto2                      | preco2  | index2 | total   |
+        | Sauce Labs Backpack   | $ 29.99   | 0      | Sauce Labs Backpack (yellow)  | $ 29.99 | 1      | $ 59.98 |
+       

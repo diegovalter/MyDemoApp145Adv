@@ -18,7 +18,6 @@ class ProductsPage {
             // Dentro do card/cartao, pega o nome do produto
             let nome_produto = await card.$(
                 '-android uiautomator',
-                //'new UiSelector().resourceId("com.saucelabs.mydemoapp.android:id/productTV")'
                 `new UiSelector().text("${produto}")`
             )
 
@@ -27,7 +26,7 @@ class ProductsPage {
             // Compara se é o nome do produto desejado
             if (texto_nome_produto == produto) {
                 await cartao.click()
-                return //sai do for após encontrar o produto desejado
+                return
             }
 
         }
